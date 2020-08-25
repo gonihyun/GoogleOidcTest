@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{https://oauth2.googleapis.com/token}" th:method="post">
+    <input type="hidden" id="code" th:value="${code}"/>
+    <input type="hidden" id="client_id" th:value="${client_id}"/>
+    <input type="hidden" id="client_secret" th:value="${client_secret}"/>
+    <input type="hidden" id="redirect_uri" th:value="${redirect_uri}"/>
+    <input type="hidden" id="grant_type" th:value="${grant_type}"/>
+<button type="submit" th:text="전송"></button>
+
+
+</form>
+
+</body>
+</html>
+
+// 구글의 JWT 를 요청하는 폼

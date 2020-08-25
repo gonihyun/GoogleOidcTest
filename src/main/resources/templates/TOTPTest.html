@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img th:src="${QRUrl}">
+<div th:text="${encodedKey}"></div>
+
+</body>
+</html>
+
+<!--
+
+QR 코드와 보안 키를 보여주는 페이지
+QR 코드를 찍거나 보안키를  Google Authentication 앱에 등록 해 주면
+6자리 숫자가나온다.
+그 숫자와 보안키를 체크하여 성공하면 인증 성공https://m.blog.naver.com/PostView.nhn?blogId=elly002&logNo=221224462622&proxyReferer=https:%2F%2Fwww.google.com%2F
+참고
+
+GoogleOTP otp = new GoogleOTP();
+HashMap<String,String> hm_otp = otp.generate("test","test.com");
+
+<img src="<%=hm_otp.get("url")%>">
+
+이렇게 QR코드 이미지를 얻을수 있다.
+휴대폰의 구글 OPT 앱으로 스캔바면 바로 비밀번호 6자리 계정이
+test@test.com 으로 생성된다.
+
+OPT 비밀번호 인증은
+
+GoogleOTP otp = new GoogleOTP();
+if( otp.checkCode("OTP비밀번호6자리","OTP생성 키값") ){
+//성공처리
+}else{
+//실패처리
+}
+//-->
