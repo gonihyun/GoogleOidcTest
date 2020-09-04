@@ -6,6 +6,17 @@ steps:
   timeout: 500s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/nice-height-287701/googleoidctest']
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+  - set
+  - image
+  - deployment/googleoidctest
+  - googleoidctest-sha256-1=gcr.io/nice-height-287701/googleoidctest
+  - -n
+  - googleoidctest-ns
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-northeast1-c'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=goni-gke'
 options:
   machineType: 'N1_HIGHCPU_8' # HIGHCPU로 빌드 스피드 업
 timeout: 1000s # 빌드 자체에 대한 타임 아웃
