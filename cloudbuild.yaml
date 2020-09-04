@@ -11,7 +11,7 @@ steps:
   - set
   - image
   - deployment/googleoidctest
-  - googleoidctest-sha256-1=gcr.io/nice-height-287701/googleoidctest
+  - googleoidctest-sha256-1=gcr.io/nice-height-287701/googleoidctest:latest
   - -n
   - googleoidctest-ns
   env:
