@@ -2,16 +2,16 @@ steps:
 - name: 'gcr.io/cloud-builders/mvn'
   args: ['install']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/nice-height-287701/googleoidctest', '.']
+  args: ['build', '-t', 'gcr.io/nice-height-287701/googleoidctest:v1', '.']
   timeout: 500s
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/nice-height-287701/googleoidctest']
+  args: ['push', 'gcr.io/nice-height-287701/googleoidctest:v1']
 - name: 'gcr.io/cloud-builders/kubectl'
   args:
   - set
   - image
   - deployment/googleoidctest
-  - googleoidctest-sha256-1=gcr.io/nice-height-287701/googleoidctest:latest
+  - googleoidctest-sha256-1=gcr.io/nice-height-287701/googleoidctest:v1
   - -n
   - googleoidctest-ns
   env:
